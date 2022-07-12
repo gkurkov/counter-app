@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Counter from './counter'
 
-const counterLists = () => {
+const СounterLists = () => {
 
     const initialState = [
         { id: 0, value: 0, name: 'Ненужная вещь' },
@@ -23,18 +23,17 @@ const counterLists = () => {
 
     
     const handleIncrement = (id) => {
-        const newCounters = counters.map((item) => ({
-            ...item,
-            value: (item.id === id) ? item.value += 1 : item.value
-        }))
+        const elementToIncrement = counters.findIndex((count => count.id === id))
+        const newCounters = [...counters]
+        newCounters[elementToIncrement].value += 1
         setCounters(newCounters)
     }
 
     const handleDecrement  = (id) => {
-        const newCounters = counters.map((item) => ({
-            ...item,
-            value: (item.id === id) ? item.value -= 1 : item.value
-        }))
+
+        const elementToDecrement = counters.findIndex((count => count.id === id))
+        const newCounters = [...counters]
+        newCounters[elementToDecrement].value -= 1
         setCounters(newCounters)
     }
 
@@ -55,4 +54,4 @@ const counterLists = () => {
     )
 }
 
-export default counterLists
+export default СounterLists
